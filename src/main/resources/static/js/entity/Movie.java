@@ -3,51 +3,51 @@ package cn.edu.scnu.entity;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 
-@Entity(name="flower")
-public class Flower {
+@Entity(name="movie")
+public class Movie {
     @Id
-    private String flowerid;
-    private String fname;
-    private String myclass;
+    private String movieid;
+    private String moviename;
+    private String genre;
     private String fclass;
-    private String fclass1;
-    private String cailiao;
+    private String region;
+    private String staring;
     private String baozhuang;
     private String huayu;
     private String shuoming;
     private Integer price;
-    private Integer yourprice;
+    private String director;
     private String pictures;
     private String picturem;
     private String pictureb;
     private String pictured;
-    private String cailiaopicture;
+    private String staringpicture;
     private String bzpicture;
     private String tejia;
     private Integer sellednum;
 
-    public String getFlowerid() {
-        return flowerid;
+    public String getMovieid() {
+        return movieid;
     }
 
-    public void setFlowerid(String flowerid) {
-        this.flowerid = flowerid;
+    public void setMovieid(String movieid) {
+        this.movieid = movieid;
     }
 
-    public String getFname() {
-        return fname;
+    public String getMoviename() {
+        return moviename;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setMoviename(String moviename) {
+        this.moviename = moviename;
     }
 
-    public String getMyclass() {
-        return myclass;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setMyclass(String myclass) {
-        this.myclass = myclass;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getFclass() {
@@ -58,20 +58,20 @@ public class Flower {
         this.fclass = fclass;
     }
 
-    public String getFclass1() {
-        return fclass1;
+    public String getRegion() {
+        return region;
     }
 
-    public void setFclass1(String fclass1) {
-        this.fclass1 = fclass1;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public String getCailiao() {
-        return cailiao;
+    public String getStaring() {
+        return staring;
     }
 
-    public void setCailiao(String cailiao) {
-        this.cailiao = cailiao;
+    public void setStaring(String staring) {
+        this.staring = staring;
     }
 
     public String getBaozhuang() {
@@ -106,12 +106,12 @@ public class Flower {
         this.price = price;
     }
 
-    public Integer getYourprice() {
-        return yourprice;
+    public Integer getDirector() {
+        return director;
     }
 
-    public void setYourprice(Integer yourprice) {
-        this.yourprice = yourprice;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public String getPictures() {
@@ -146,12 +146,12 @@ public class Flower {
         this.pictured = pictured;
     }
 
-    public String getCailiaopicture() {
-        return cailiaopicture;
+    public String getStaringpicture() {
+        return staringpicture;
     }
 
-    public void setCailiaopicture(String cailiaopicture) {
-        this.cailiaopicture = cailiaopicture;
+    public void setStaringpicture(String staringpicture) {
+        this.staringpicture = staringpicture;
     }
 
     public String getBzpicture() {

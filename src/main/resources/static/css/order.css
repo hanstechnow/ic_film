@@ -203,25 +203,25 @@
 	font-weight: bold;
 	color: #c00;
 }
-.order-bar .flower-pic{
+.order-bar .movie-pic{
 	box-sizing: border-box;
 	max-width: 48px;
 	max-height: 51px;
 	margin-top: 10px;
 	border: 1px solid #ccc;
 }
-.flower-desc{
+.movie-desc{
 	width: 900px;
 	margin-top: 20px;
 	float: right;
 }
-.order-bar .flower-name{
+.order-bar .movie-name{
 	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.order-bar .flower-price{
+.order-bar .movie-price{
 	color: #c00;
 	font-weight: bold;
 }

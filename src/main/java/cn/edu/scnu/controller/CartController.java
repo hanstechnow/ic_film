@@ -19,13 +19,13 @@ public class CartController {
     private CartService cartService;
 
     @RequestMapping("/cart/addCart")
-    public String addCart(String flowerid,HttpSession session){
+    public String addCart(String movieid,HttpSession session){
         TbMember member=(TbMember)session.getAttribute("memberLogin");
         if(member==null){
             return "login";
         }
         Cart cart=new Cart();
-        cart.setFlowerid(flowerid);
+        cart.setMovieid(movieid);
         cart.setEmail(member.getEmail());
         cart.setNum(1);
         cartService.addCart(cart);

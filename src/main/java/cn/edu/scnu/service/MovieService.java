@@ -1,8 +1,8 @@
 package cn.edu.scnu.service;
 
-import cn.edu.scnu.entity.Flower;
-import cn.edu.scnu.entity.MyFlower;
-import cn.edu.scnu.mapper.FlowerMapper;
+import cn.edu.scnu.entity.Movie;
+import cn.edu.scnu.entity.MyMovie;
+import cn.edu.scnu.mapper.MovieMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,46 +22,46 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class FlowerService extends ServiceImpl<FlowerMapper, Flower> {
+public class MovieService extends ServiceImpl<MovieMapper, Movie> {
     @Autowired
-    private FlowerMapper flowerMapper;
+    private MovieMapper movieMapper;
 
     @Autowired
     private RedisTemplate redisTemplate;
 
-    public List<Flower> findAll() {
-        return flowerMapper.selectList(null);
+    public List<Movie> findAll() {
+        return movieMapper.selectList(null);
     }
 
     @Cacheable(cacheNames = "fclass")
     public List<String> findclass() {
-        QueryWrapper<Flower> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("distinct fclass");
-        List<Flower> flowers = flowerMapper.selectList(queryWrapper);
+        List<Movie> movies = movieMapper.selectList(queryWrapper);
         List<String> fclasses = new ArrayList<>();
-        for(Flower flower: flowers){
-            fclasses.add(flower.getFclass());
+        for(Movie movie: movies){
+            fclasses.add(movie.getFclass());
         }
         return fclasses;
     }
 
-    public String saveFlower(MyFlower myFlower) {
-        Flower flower = new Flower();
+    public String saveMovie(MyMovie myMovie) {
+        Movie movie = new Movie();
         //生成UUID
-        String flowerid = UUID.randomUUID().toString();
-        flower.setFlowerid(flowerid);
-        flower.setFname(myFlower.getFname());
-        flower.setMyclass(myFlower.getMyclass());
-        flower.setFclass(myFlower.getFclass());
-        flower.setFclass1(myFlower.getFclass1());
-        flower.setCailiao(myFlower.getCailiao());
-        flower.setBaozhuang(myFlower.getBaozhuang());
-        flower.setHuayu(myFlower.getHuayu());
-        flower.setShuoming(myFlower.getShuoming());
-        flower.setPrice(myFlower.getPrice());
-        flower.setYourprice(myFlower.getYourprice());
-        flower.setTejia(myFlower.getTejia());
-        flower.setSellednum(0);
+        String movieid = UUID.randomUUID().toString();
+        movie.setMovieid(movieid);
+        movie.setMoviename(myMovie.getMoviename());
+        movie.setGenre(myMovie.getGenre());
+        movie.setFclass(myMovie.getFclass());
+        movie.setRegion(myMovie.getRegion());
+        movie.setStaring(myMovie.getStaring());
+        movie.setBaozhuang(myMovie.getBaozhuang());
+        movie.setHuayu(myMovie.getHuayu());
+        movie.setShuoming(myMovie.getShuoming());
+        movie.setPrice(myMovie.getPrice());
+        movie.setDirector(myMovie.getDirector());
+        movie.setTejia(myMovie.getTejia());
+        movie.setSellednum(0);
 
         // 2.生成多级路径
         String imgurl = "";
@@ -77,65 +77,65 @@ public class FlowerService extends ServiceImpl<FlowerMapper, Flower> {
 
         String msg;
 
-        MultipartFile pictures =  myFlower.getPictures();
+        MultipartFile pictures =  myMovie.getPictures();
         if(!"".equals(pictures.getOriginalFilename())){
             msg = uploadfile(pictures, dir);
             if(!"".equals(msg)){
                 return msg;
             } else{
                 // 这里上课老师用的是dir，但是文档里面是imgurl，所以我改回来了
-                flower.setPictures(imgurl + "/" +pictures.getOriginalFilename());
+                movie.setPictures(imgurl + "/" +pictures.getOriginalFilename());
             }
         }
 
         //处理picturem
-        MultipartFile picturem = myFlower.getPicturem();
+        MultipartFile picturem = myMovie.getPicturem();
         if(!"".equals(picturem.getOriginalFilename())){
             msg = uploadfile(picturem,dir);
             if(!"".equals(msg)){
                 return msg;
             }else{
-                flower.setPicturem(imgurl+"/"+picturem.getOriginalFilename());
+                movie.setPicturem(imgurl+"/"+picturem.getOriginalFilename());
             }}
         //处理pictureb
-        MultipartFile pictureb = myFlower.getPictureb();
+        MultipartFile pictureb = myMovie.getPictureb();
         if(!"".equals(pictureb.getOriginalFilename())){
             msg = uploadfile(pictureb,dir);
             if(!"".equals(msg)){
                 return msg;
             }else{
-                flower.setPictureb(imgurl+"/"+pictureb.getOriginalFilename());
+                movie.setPictureb(imgurl+"/"+pictureb.getOriginalFilename());
             }}
         //处理pictured
-        MultipartFile pictured = myFlower.getPictured();
+        MultipartFile pictured = myMovie.getPictured();
         if(!"".equals(pictured.getOriginalFilename())){
             msg = uploadfile(pictured,dir);
             if(!"".equals(msg)){
                 return msg;
             }else{
-                flower.setPictured(imgurl+"/"+pictured.getOriginalFilename());
+                movie.setPictured(imgurl+"/"+pictured.getOriginalFilename());
                 System.out.println("数据库图片路径"+imgurl+pictured.getOriginalFilename());
             }}
         //处理bzpicture
-        MultipartFile bzpicture = myFlower.getBzpicture();
+        MultipartFile bzpicture = myMovie.getBzpicture();
         if(!"".equals(bzpicture.getOriginalFilename())){
             msg = uploadfile(bzpicture,dir);
             if(!"".equals(msg)){
                 return msg;
             }else{
-                flower.setBzpicture(imgurl+"/"+bzpicture.getOriginalFilename());
+                movie.setBzpicture(imgurl+"/"+bzpicture.getOriginalFilename());
             }}
-        //处理cailiaopicture
-        MultipartFile cailiaopicture = myFlower.getCailiaopicture();
-        if(!"".equals(cailiaopicture.getOriginalFilename())){
-            msg = uploadfile(cailiaopicture,dir);
+        //处理staringpicture
+        MultipartFile staringpicture = myMovie.getStaringpicture();
+        if(!"".equals(staringpicture.getOriginalFilename())){
+            msg = uploadfile(staringpicture,dir);
             if(!"".equals(msg)){
                 return msg;
             }else{
-                flower.setCailiaopicture(imgurl+"/"+cailiaopicture.getOriginalFilename());
+                movie.setStaringpicture(imgurl+"/"+staringpicture.getOriginalFilename());
             }}
 
-        flowerMapper.insert(flower);
+        movieMapper.insert(movie);
 
         return "保存成功";
     }
@@ -172,44 +172,44 @@ public class FlowerService extends ServiceImpl<FlowerMapper, Flower> {
         return "";
     }
 
-    @CacheEvict(cacheNames = "flower")
-    public void deleteById(String flowerid) {
-        flowerMapper.deleteById(flowerid);
+    @CacheEvict(cacheNames = "movie")
+    public void deleteById(String movieid) {
+        movieMapper.deleteById(movieid);
     }
 
-//    @Cacheable(cacheNames = "flower", key = "#result.flowerid")
-    public Flower findById(String flowerid) {
-        Object object = redisTemplate.opsForValue().get("flower_"+flowerid);
+//    @Cacheable(cacheNames = "movie", key = "#result.movieid")
+    public Movie findById(String movieid) {
+        Object object = redisTemplate.opsForValue().get("movie_"+movieid);
         if(object != null){
-            return (Flower) object;
+            return (Movie) object;
         } else {
-            Flower flower = flowerMapper.selectById(flowerid);
-            redisTemplate.opsForValue().set("flower_"+flowerid, flower, 1, TimeUnit.DAYS);
-            return flower;
+            Movie movie = movieMapper.selectById(movieid);
+            redisTemplate.opsForValue().set("movie_"+movieid, movie, 1, TimeUnit.DAYS);
+            return movie;
         }
     }
 
-    @CachePut(cacheNames = "flower", key = "#result.flowerid")
-    public Flower updateFlower(Flower flower) {
-        flowerMapper.updateById(flower);
-        return flower;
+    @CachePut(cacheNames = "movie", key = "#result.movieid")
+    public Movie updateMovie(Movie movie) {
+        movieMapper.updateById(movie);
+        return movie;
     }
 
     public Map<String, Object> queryPage(Integer pageNo, Integer pageSize,
-                                         String fname, String fclass,
+                                         String moviename, String fclass,
                                          Integer minprice, Integer maxprice) {
 
-        QueryWrapper<Flower> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(fname))
-            queryWrapper.like("fname", fname);
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        if(StringUtils.isNotEmpty(moviename))
+            queryWrapper.like("moviename", moviename);
         if(StringUtils.isNotEmpty(fclass))
             queryWrapper.like("fclass", fclass);
-        queryWrapper.between("yourprice", minprice, maxprice);
+        queryWrapper.between("director", minprice, maxprice);
 
-        int count = flowerMapper.selectCount(queryWrapper).intValue();
+        int count = movieMapper.selectCount(queryWrapper).intValue();
         queryWrapper.orderByDesc("sellednum");
-        Page<Flower> page = new Page<>(pageNo, pageSize);
-        flowerMapper.selectPage(page, queryWrapper);
+        Page<Movie> page = new Page<>(pageNo, pageSize);
+        movieMapper.selectPage(page, queryWrapper);
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
         map.put("recourds", page.getRecords());

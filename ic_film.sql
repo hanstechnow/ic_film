@@ -31,7 +31,7 @@ CREATE TABLE `evaluate` (
   PRIMARY KEY (`eid`),
   KEY `evaluate_movie_id_fk` (`id`),
   KEY `evaluate_user_uid_fk` (`uid`),
-  CONSTRAINT `evaluate_movie_id_fk` FOREIGN KEY (`id`) REFERENCES `movie` (`id`),
+  CONSTRAINT `evaluate_movie_id_fk` FOREIGN KEY (`id`) REFERENCES `movie` (movieid),
   CONSTRAINT `evaluate_user_uid_fk` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=551 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -126,18 +126,18 @@ DELIMITER ;;
     SET rating = (
         SELECT AVG(value)
         FROM evaluate
-        WHERE id = NEW.id
+        WHERE movieid = NEW.id
     )
-    WHERE id = NEW.id;
+    WHERE movieid = NEW.id;
 
     -- Update index
     UPDATE movie
     SET `index` = (
         SELECT COUNT(*)
         FROM evaluate
-        WHERE id = NEW.id
+        WHERE movieid = NEW.id
     )
-    WHERE id = NEW.id;
+    WHERE movieid = NEW.id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -173,7 +173,7 @@ DELIMITER ;;
     UPDATE movie
     SET weekindex = week_count,
         monthindex = month_count
-    WHERE id = NEW.id;
+    WHERE movieid = NEW.id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -264,9 +264,9 @@ DELIMITER ;;
     SET rating = (
         SELECT AVG(value)
         FROM evaluate
-        WHERE id = NEW.id
+        WHERE movieid = NEW.id
     )
-    WHERE id = NEW.id;
+    WHERE movieid = NEW.id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -302,7 +302,7 @@ DELIMITER ;;
     UPDATE movie
     SET weekindex = week_count,
         monthindex = month_count
-    WHERE id = NEW.id;
+    WHERE movieid = NEW.id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -324,12 +324,12 @@ DELIMITER ;;
     SET rating = (
         SELECT AVG(value)
         FROM evaluate
-        WHERE id = OLD.id
+        WHERE movieid = OLD.id
     )
-    WHERE id = OLD.id AND (
+    WHERE movieid = OLD.id AND (
         SELECT COUNT(*)
         FROM evaluate
-        WHERE id = OLD.id
+        WHERE movieid = OLD.id
     ) > 0;
 
     -- Update index
@@ -337,9 +337,9 @@ DELIMITER ;;
     SET `index` = (
         SELECT COUNT(*)
         FROM evaluate
-        WHERE id = OLD.id
+        WHERE movieid = OLD.id
     )
-    WHERE id = OLD.id;
+    WHERE movieid = OLD.id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -375,7 +375,7 @@ DELIMITER ;;
     UPDATE movie
     SET weekindex = week_count,
         monthindex = month_count
-    WHERE id = OLD.id;
+    WHERE movieid = OLD.id;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

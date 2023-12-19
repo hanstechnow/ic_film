@@ -6,25 +6,25 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class Flower implements Serializable {
+public class Movie implements Serializable {
     private static final long serialVersionUID = -3710185376322109571L;
     @TableId
-    private String flowerid;
-    private String fname;
-    private String myclass;
+    private String movieid;
+    private String moviename;
+    private String genre;
     private String fclass;
-    private String fclass1;
-    private String cailiao;
+    private String region;
+    private String staring;
     private String baozhuang;
     private String huayu;
     private String shuoming;
     private Integer price;
-    private Integer yourprice;
+    private String director;
     private String pictures;
     private String picturem;
     private String pictureb;
     private String pictured;
-    private String cailiaopicture;
+    private String staringpicture;
     private String bzpicture;
     private String tejia;
     private Integer sellednum;

@@ -8,7 +8,7 @@ public class Cart {
     @Column(name="cart_id")
     private Integer cartId;
     private String email;
-    private String flowerid;
+    private String movieid;
     private Integer num;
 
     public Integer getCartId() {
@@ -27,12 +27,12 @@ public class Cart {
         this.email = email;
     }
 
-    public String getFlowerid() {
-        return flowerid;
+    public String getMovieid() {
+        return movieid;
     }
 
-    public void setFlowerid(String flowerid) {
-        this.flowerid = flowerid;
+    public void setMovieid(String movieid) {
+        this.movieid = movieid;
     }
 
     public Integer getNum() {

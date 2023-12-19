@@ -31,8 +31,8 @@ function change(btn, n,cartId) {
     t.val(num+n);
     num = t.val();
     var tds=$(btn).parent().siblings();
-    var yourprice = tds.eq(4).text();
-    tds.eq(5).text(yourprice * num);
+    var director = tds.eq(4).text();
+    tds.eq(5).text(director * num);
     total();
     $.post("/cart/updateCart",{"cartId":cartId,"num":num});
 }

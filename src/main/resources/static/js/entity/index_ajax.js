@@ -24,8 +24,8 @@ $(function(){
         }
     });
 });
-function addCartOne(flowerid){
-    if(flowerid==null){
+function addCartOne(movieid){
+    if(movieid==null){
         alert("商品id错误");
         return;
     }
@@ -34,7 +34,7 @@ function addCartOne(flowerid){
         return;
     }
     $.ajax({
-        url:"/cart/addCart?email="+email+"&flowerid="+flowerid+"&num=1",
+        url:"/cart/addCart?email="+email+"&movieid="+movieid+"&num=1",
         type:"GET",
         success:function (data) {
             alert(data);

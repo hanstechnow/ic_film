@@ -1,8 +1,8 @@
 package cn.edu.scnu.controller;
 
-import cn.edu.scnu.entity.Flower;
-import cn.edu.scnu.entity.MyFlower;
-import cn.edu.scnu.service.FlowerService;
+import cn.edu.scnu.entity.Movie;
+import cn.edu.scnu.entity.MyMovie;
+import cn.edu.scnu.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,48 +15,48 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private FlowerService flowerService;
+    private MovieService movieService;
 
-    @RequestMapping("/admin/flowerindex")
-    public String flowerIndex(Model model){
-        List<Flower> flowerList = flowerService.findAll();
-        model.addAttribute("flowers", flowerList);
-        return "flowerindex";
+    @RequestMapping("/admin/movieindex")
+    public String movieIndex(Model model){
+        List<Movie> movieList = movieService.findAll();
+        model.addAttribute("movies", movieList);
+        return "movieindex";
     }
 
-    @RequestMapping("/admin/floweradd")
-    public String flowerAdd(Model model){
-        List<String> fclasses = flowerService.findclass();
+    @RequestMapping("/admin/movieadd")
+    public String movieAdd(Model model){
+        List<String> fclasses = movieService.findclass();
         model.addAttribute("fclasses", fclasses);
-        return "floweradd";
+        return "movieadd";
     }
 
-    @RequestMapping("/admin/saveFlower")
-    public String saveFlower(MyFlower myflower){
-        String msg = flowerService.saveFlower(myflower);
+    @RequestMapping("/admin/saveMovie")
+    public String saveMovie(MyMovie mymovie){
+        String msg = movieService.saveMovie(mymovie);
         System.out.println(msg);
-        return "redirect:/admin/flowerindex";
+        return "redirect:/admin/movieindex";
     }
 
-    @RequestMapping("/admin/flowerdelete")
-    public String deleteFlower(String flowerid){
-//        flowerService.removeById(flowerid);  // 可以不用在Service中写代码
-        flowerService.deleteById(flowerid);
-        return "redirect:/admin/flowerindex";
+    @RequestMapping("/admin/moviedelete")
+    public String deleteMovie(String movieid){
+//        movieService.removeById(movieid);  // 可以不用在Service中写代码
+        movieService.deleteById(movieid);
+        return "redirect:/admin/movieindex";
     }
 
-    @RequestMapping("/admin/flowerupdate")
-    public String flowerupdate(String flowerid, Model model){
-        model.addAttribute("fclasses", flowerService.findclass());
-        model.addAttribute("flower", flowerService.findById(flowerid));
-        return "flowerupdate";
+    @RequestMapping("/admin/movieupdate")
+    public String movieupdate(String movieid, Model model){
+        model.addAttribute("fclasses", movieService.findclass());
+        model.addAttribute("movie", movieService.findById(movieid));
+        return "movieupdate";
     }
 
     @RequestMapping("/admin/saveUpdate")
-    public String saveUpdate(Flower flower){
-        Flower flower1 = flowerService.updateFlower(flower);
+    public String saveUpdate(Movie movie){
+        Movie movie1 = movieService.updateMovie(movie);
 
-        return "redirect:/admin/flowerindex";
+        return "redirect:/admin/movieindex";
     }
 
 

@@ -100,10 +100,10 @@
 
 							<div class="order-bar" >
 
-								<img class="flower-pic" th:src="'/picture/'+${cart.pictures}" alt="鲜花图片">
-								<div class="flower-desc">
-									<a th:href="'index/flowerDetail?floweid='+${cart.flowerid}" th:text="${cart.fname}">fname</a><br>
-									<span class="flower-price" th:text="${cart.yourprice}"></span>
+								<img class="movie-pic" th:src="'/picture/'+${cart.pictures}" alt="鲜花图片">
+								<div class="movie-desc">
+									<a th:href="'index/movieDetail?floweid='+${cart.movieid}" th:text="${cart.moviename}">moviename</a><br>
+									<span class="movie-price" th:text="${cart.director}"></span>
 									<span class="num"> x <span th:text="${cart.num}"></span></span>
 								</div>
 							</div>

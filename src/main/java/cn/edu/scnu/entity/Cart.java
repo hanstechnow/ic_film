@@ -9,11 +9,11 @@ public class Cart {
     @TableId(type = IdType.AUTO)
     private Integer cartId;
     private String email;
-    private String flowerid;
+    private String movieid;
     private Integer num;
-    private String fname;
+    private String moviename;
     private String pictures;
     private Integer price;
-    private Integer yourprice;
+    private String director;
 
 }

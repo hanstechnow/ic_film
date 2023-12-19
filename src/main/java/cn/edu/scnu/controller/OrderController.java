@@ -44,7 +44,7 @@ public class OrderController {
             Cart cart=cartService.getById(cid);
             carts.add(cart);
             sum+=cart.getNum();
-            total=cart.getNum() * cart.getYourprice();
+            total=cart.getNum();
         }
         model.addAttribute("carts",carts);
         model.addAttribute("sum",sum);

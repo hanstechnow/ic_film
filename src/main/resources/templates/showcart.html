@@ -27,14 +27,14 @@
 <td th:text="${cart.cartId}"></td>
 
 <td><div style='height:50px; float:left;'>
-	<a th:href="'/index/flowerdetail?flowerid='+${cart.flowerid}">
+	<a th:href="'/index/moviedetail?movieid='+${cart.movieid}">
 		<img th:src="'/picture/'+${cart.pictures}" width="48" height="51" border=0/>
 	</a></div>
-<div style="height:50px; float:left;" th:text="${cart.fname}"></div>
+<div style="height:50px; float:left;" th:text="${cart.moviename}"></div>
 </td>
 
 <td th:text="${cart.price}">202</td>
-<td th:text="${cart.yourprice}">178<td>
+<td th:text="${cart.director}">178<td>
  
   
  <input type="button" value="-" th:onclick="change(this, -1,[[${cart.cartId}]]);"/>

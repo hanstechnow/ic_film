@@ -1,9 +1,9 @@
 package cn.edu.scnu.controller;
 
-import cn.edu.scnu.entity.Flower;
+import cn.edu.scnu.entity.Movie;
 import cn.edu.scnu.entity.RegisterDTO;
 import cn.edu.scnu.entity.TbMember;
-import cn.edu.scnu.service.FlowerService;
+import cn.edu.scnu.service.MovieService;
 import cn.edu.scnu.service.MemberService;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class IndexController {
 
     @Autowired
-    private FlowerService flowerService;
+    private MovieService movieService;
 
     @Autowired
     private MemberService memberService;
@@ -33,7 +33,7 @@ public class IndexController {
     @RequestMapping("/index")
     public String index(@RequestParam(name="pageNo", defaultValue = "1") Integer pageNo,
                         @RequestParam(name="pageSize", defaultValue = "4") Integer pageSize,
-                        String fname,
+                        String moviename,
                         String fclass,
                         @RequestParam(name="minprice", defaultValue = "0") Integer minprice,
                         @RequestParam(name="maxprice", defaultValue = Integer.MAX_VALUE+"") Integer maxprice,
@@ -44,9 +44,9 @@ public class IndexController {
         }
 
         // 当前页码，每一页显示多少条记录，
-        Map<String, Object> map = flowerService.queryPage(pageNo, pageSize,fname,fclass,minprice,maxprice);
+        Map<String, Object> map = movieService.queryPage(pageNo, pageSize,moviename,fclass,minprice,maxprice);
         int count = (Integer) map.get("count");
-        List<Flower> flowerList = (List<Flower>)map.get("recourds");
+        List<Movie> movieList = (List<Movie>)map.get("recourds");
 
         // 66/4
         int pageCount = (count / pageSize == 0) ? (count / pageSize) : (count / pageSize) + 1;
@@ -54,20 +54,20 @@ public class IndexController {
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("pageCount", pageCount);
 
-        model.addAttribute("fname", fname);
+        model.addAttribute("moviename", moviename);
         model.addAttribute("fclass", fclass);
         model.addAttribute("minprice", minprice);
         model.addAttribute("maxprice", maxprice);
 
-        model.addAttribute("flowerlist", flowerList);
-        model.addAttribute("fclasses", flowerService.findclass());
+        model.addAttribute("movielist", movieList);
+        model.addAttribute("fclasses", movieService.findclass());
         return "index";
     }
 
-    @RequestMapping("/index/flowerdetail")
-    public String flowerdetail(String flowerid, Model model){
-        model.addAttribute("flower", flowerService.findById(flowerid));
-        return "flowerdetail";
+    @RequestMapping("/index/moviedetail")
+    public String moviedetail(String movieid, Model model){
+        model.addAttribute("movie", movieService.findById(movieid));
+        return "moviedetail";
     }
 
     @RequestMapping("/index/toLogin")

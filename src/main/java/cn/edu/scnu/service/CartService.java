@@ -1,9 +1,9 @@
 package cn.edu.scnu.service;
 
 import cn.edu.scnu.entity.Cart;
-import cn.edu.scnu.entity.Flower;
+import cn.edu.scnu.entity.Movie;
 import cn.edu.scnu.mapper.CartMapper;
-import cn.edu.scnu.mapper.FlowerMapper;
+import cn.edu.scnu.mapper.MovieMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +18,19 @@ public class CartService extends ServiceImpl<CartMapper, Cart> {
     private CartMapper cartMapper;
 
     @Autowired
-    private FlowerMapper flowerMapper;
+    private MovieMapper movieMapper;
 
     public void addCart(Cart cart) {
         QueryWrapper<Cart> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("email", cart.getEmail());
-        queryWrapper.eq("flowerId", cart.getFlowerid());
+        queryWrapper.eq("movieId", cart.getMovieid());
         Cart _cart = cartMapper.selectOne(queryWrapper);
         if (_cart == null){
-            Flower flower = flowerMapper.selectById(cart.getFlowerid());
-            cart.setFname(flower.getFname());
-            cart.setPictures(flower.getPictures());
-            cart.setPrice(flower.getPrice());
-            cart.setYourprice(flower.getYourprice());
+            Movie movie = movieMapper.selectById(cart.getMovieid());
+            cart.setMoviename(movie.getMoviename());
+            cart.setPictures(movie.getPictures());
+            cart.setPrice(movie.getPrice());
+            cart.setDirector(movie.getDirector());
             cartMapper.insert(cart);
         } else {
             _cart.setNum(_cart.getNum() + cart.getNum());

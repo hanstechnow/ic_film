@@ -3,13 +3,13 @@ import javax.persistence.Column;
 public class MyCart {
     @Column(name="cart_id")
     private Integer cartId;
-    private String flowerid;
+    private String movieid;
     private String pictures;
     private String email;
     private Integer num;
-    private String fname;
+    private String moviename;
     private Integer price;
-    private Integer yourprice;
+    private String director;
 
     public Integer getCartId() {
         return cartId;
@@ -19,12 +19,12 @@ public class MyCart {
         this.cartId = cartId;
     }
 
-    public String getFlowerid() {
-        return flowerid;
+    public String getMovieid() {
+        return movieid;
     }
 
-    public void setFlowerid(String flowerid) {
-        this.flowerid = flowerid;
+    public void setMovieid(String movieid) {
+        this.movieid = movieid;
     }
 
     public String getPictures() {
@@ -51,12 +51,12 @@ public class MyCart {
         this.num = num;
     }
 
-    public String getFname() {
-        return fname;
+    public String getMoviename() {
+        return moviename;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setMoviename(String moviename) {
+        this.moviename = moviename;
     }
 
     public Integer getPrice() {
@@ -67,11 +67,11 @@ public class MyCart {
         this.price = price;
     }
 
-    public Integer getYourprice() {
-        return yourprice;
+    public Integer getDirector() {
+        return director;
     }
 
-    public void setYourprice(Integer yourprice) {
-        this.yourprice = yourprice;
+    public void setDirector(String director) {
+        this.director = director;
     }
 }

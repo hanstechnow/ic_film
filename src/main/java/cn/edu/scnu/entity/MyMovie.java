@@ -3,40 +3,40 @@ package cn.edu.scnu.entity;
 import org.springframework.web.multipart.MultipartFile;
 
 // 不用注解，因为是和前端打交道
-public class MyFlower {
+public class MyMovie {
 
-    private String fname;
-    private String myclass;
+    private String moviename;
+    private String genre;
     private String fclass;
-    private String fclass1;
-    private String cailiao;
+    private String region;
+    private String staring;
     private String baozhuang;
     private String huayu;
     private String shuoming;
     private Integer price;
-    private Integer yourprice;
+    private String director;
     private MultipartFile pictures;
     private MultipartFile picturem;
     private MultipartFile pictureb;
     private MultipartFile pictured;
-    private MultipartFile cailiaopicture;
+    private MultipartFile staringpicture;
     private MultipartFile bzpicture;
     private String tejia;
 
-    public String getFname() {
-        return fname;
+    public String getMoviename() {
+        return moviename;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setMoviename(String moviename) {
+        this.moviename = moviename;
     }
 
-    public String getMyclass() {
-        return myclass;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setMyclass(String myclass) {
-        this.myclass = myclass;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getFclass() {
@@ -47,20 +47,20 @@ public class MyFlower {
         this.fclass = fclass;
     }
 
-    public String getFclass1() {
-        return fclass1;
+    public String getRegion() {
+        return region;
     }
 
-    public void setFclass1(String fclass1) {
-        this.fclass1 = fclass1;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public String getCailiao() {
-        return cailiao;
+    public String getStaring() {
+        return staring;
     }
 
-    public void setCailiao(String cailiao) {
-        this.cailiao = cailiao;
+    public void setStaring(String staring) {
+        this.staring = staring;
     }
 
     public String getBaozhuang() {
@@ -95,12 +95,12 @@ public class MyFlower {
         this.price = price;
     }
 
-    public Integer getYourprice() {
-        return yourprice;
+    public String getDirector() {
+        return director;
     }
 
-    public void setYourprice(Integer yourprice) {
-        this.yourprice = yourprice;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public MultipartFile getPictures() {
@@ -135,12 +135,12 @@ public class MyFlower {
         this.pictured = pictured;
     }
 
-    public MultipartFile getCailiaopicture() {
-        return cailiaopicture;
+    public MultipartFile getStaringpicture() {
+        return staringpicture;
     }
 
-    public void setCailiaopicture(MultipartFile cailiaopicture) {
-        this.cailiaopicture = cailiaopicture;
+    public void setStaringpicture(MultipartFile staringpicture) {
+        this.staringpicture = staringpicture;
     }
 
     public MultipartFile getBzpicture() {
