@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+<center>
+<div id="top" th:insert="admintop.html"/>
+<a href="/admin/floweradd">添加鲜花</a>
+<table width="999px" border="0" cellpadding="0"
+			cellspacing="1" style="background:#d8d8d8;color:#333333">
+			<tr><th width="100px" height="30" align="center" valign="middle">商品编号</th>
+				<th width="150px" align="center" valign="middle">商品图片</th>
+				<th width="110px" height="30" align="center" valign="middle">商品名称</th>
+				<th width="100px" align="center" valign="middle" >原价</th>
+				<th width="100px" align="center" valign="middle">现价</th>
+				<th width="100px" align="center" valign="middle" >销售数量</th>				
+				<th width="100px" align="center" valign="middle">操作</th>				
+			
+			</tr>
+	<!--th: each开始 -->
+			<div th:each="flower:${flowers}">
+			<tr><td valign="middle" bgcolor="#FFFFFF" th:text="${flower.flowerid}"></td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF">	
+					<a th:href="@{/index/followerdetail(c}">
+						<img th:src="@{'/picture/'+${flower.picturem}}" width="60" heigth="60" border=0>
+					</a>
+				</td>
+				<td valign="middle" bgcolor="#FFFFFF" th:text="${flower.fname}"></td>
+				<td valign="middle" bgcolor="#FFFFFF" th:text="${flower.price}"></td>
+				<td valign="middle" bgcolor="#FFFFFF" th:text="${flower.yourprice}"></td>
+				<td valign="middle" bgcolor="#FFFFFF" th:text="${flower.sellednum}"></td>
+				<td valign="middle"  align="center"  bgcolor="#FFFFFF">
+				<a th:href="@{/admin/flowerupdate(flowerid=${flower.flowerid})}">修改</a>
+				<a th:href="'/admin/flowerdelete?flowerid='+${flower.flowerid}">删除</a>
+				</td>
+			</tr>
+			</div>
+
+	<!--th: each结束 -->
+			</table>
+</center></body>

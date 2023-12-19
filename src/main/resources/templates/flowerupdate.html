@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<center>
+    <div id="top" th:insert="admintop.html"/>
+    <FORM action="/admin/saveUpdate" method="post">
+        <table style="width:550px;border-width:2px;border-style:dotted;">
+            <tr>
+                <td colspan=2 style="text-align:center; width:650px;">
+                    <font size=4>修改鲜花</font>&nbsp;&nbsp;<a href="/admin/flowerindex">返回</a></td>
+            </tr>
+
+            <tr>
+                <td style="text-align:right"><font size=2>名称：</font></td>
+                <td><input type="hidden" name="flowerid" SIZE=18 th:value="${flower.flowerid}">
+                    <input type=text name="fname" SIZE=18 th:value="${flower.fname}"></td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2 th:text="'类别：'+${flower.myclass}">类别：</font></td>
+                <td><Select name="myclass" >
+                    <Option value="鲜花">鲜花
+                    <Option value="蛋糕">蛋糕
+                    <Option value="礼篮">礼篮
+                    <Option value="果篮">果篮
+                    <Option value="公仔">公仔
+                </Select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2  th:text="'用途：'+${flower.fclass}">用途：</font></td>
+                <td><select name="fclass">
+                    <option th:each="fclass:${fclasses}" th:value="${fclass}" th:text="${fclass}"></option>
+                </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2  th:text="'主材料：'+${flower.fclass1}">主材料：</font></td>
+                <td><Select name="fclass1" >
+                    <Option value="玫瑰">玫瑰
+                    <Option value="康乃馨">康乃馨
+                    <Option value="郁金香">郁金香
+                    <Option value="百合">百合
+                    <Option value="扶郎">扶郎
+                    <Option value="马蹄莲">马蹄莲
+                    <Option value="向日葵">向日葵
+                    <Option value="蓝色妖姬">蓝色妖姬
+                </Select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2>材料：</font></td>
+                <td><TextArea name="cailiao" Rows="2" Cols="40" th:text="${flower.cailiao}"></TextArea></td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2>包装：</font></td>
+                <td><TextArea name="baozhuang" Rows="2" Cols="40" th:text="${flower.baozhuang}"></TextArea></td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2>花语：</font></td>
+                <td><TextArea name="huayu" Rows="3" Cols="40"  th:text="${flower.huayu}"></TextArea></td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2 >说明：</font></td>
+                <td><input type=text name="shuoming" SIZE=40 th:value="${flower.shuoming}"></td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2>市场价：</font></td>
+                <td><input type=text name="price" SIZE=18 th:value="${flower.price}"></td>
+            </tr>
+            <tr>
+                <td style="text-align:right"><font size=2>现价：</font></td>
+                <td><input type=text name="yourprice" SIZE=18 th:value="${flower.yourprice}"></td>
+            </tr>
+
+            <tr>
+                <td style="text-align:right"><font size=2 th:text="'是否特价：'+${flower.tejia}">是否特价：</font></td>
+                <td><Select name="tejia" >
+                    <Option value="是" selected>是
+                    <Option value="否">否
+                </Select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2 style="text-align:center"><INPUT type="submit" name="s" value="提交"></td></tr>
+        </table>
+    </FORM>
+</center>
+</body>
+</html>
