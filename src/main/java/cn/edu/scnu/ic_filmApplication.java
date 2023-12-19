@@ -6,10 +6,10 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @EnableCaching
 @SpringBootApplication
-public class SpringBootFlowerApplication {
+public class ic_filmApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootFlowerApplication.class, args);
+        SpringApplication.run(ic_filmApplication.class, args);
     }
 
 }
