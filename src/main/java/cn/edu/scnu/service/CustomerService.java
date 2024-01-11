@@ -19,9 +19,9 @@ public class CustomerService extends ServiceImpl<CustomerMapper, Customer> {
     }
 
 
-    public List<Customer> findByEmail(String email) {
+    public List<Customer> findByUsername(String username) {
         QueryWrapper<Customer>queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("email",email);
+        queryWrapper.eq("username",username);
         return customerMapper.selectList(queryWrapper);
 
     }

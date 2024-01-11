@@ -34,7 +34,7 @@ public class OrderController {
         model.addAttribute("member",member);
 
 
-        List<Customer> customers=customerService.findByEmail(member.getEmail());
+        List<Customer> customers=customerService.findByUsername(member.getUsername());
         model.addAttribute("customers",customers);
         List<Cart> carts=new ArrayList<>();
         String[] arrcartIds=cartIds.split(",");

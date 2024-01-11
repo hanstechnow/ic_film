@@ -4771,7 +4771,7 @@ if ( jQuery.expr && jQuery.expr.filters ) {
 var jsc = now(),
 	rscript = /<script(.|\s)*?\/script>/gi,
 	rselectTextarea = /select|textarea/i,
-	rinput = /color|date|datetime|email|hidden|month|number|password|range|search|tel|text|time|url|week/i,
+	rinput = /color|date|datetime|username|hidden|month|number|password|range|search|tel|text|time|url|week/i,
 	jsre = /=\?(&|$)/,
 	rquery = /\?/,
 	rts = /(\?|&)_=.*?(&|$)/,

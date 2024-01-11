@@ -10,11 +10,11 @@ public class MyMovie {
     private String fclass;
     private String region;
     private String staring;
-    private String baozhuang;
+    private String director;
     private String huayu;
     private String shuoming;
     private Integer price;
-    private String director;
+    private String rating;
     private MultipartFile pictures;
     private MultipartFile picturem;
     private MultipartFile pictureb;
@@ -63,12 +63,12 @@ public class MyMovie {
         this.staring = staring;
     }
 
-    public String getBaozhuang() {
-        return baozhuang;
+    public String getDirector() {
+        return director;
     }
 
-    public void setBaozhuang(String baozhuang) {
-        this.baozhuang = baozhuang;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public String getHuayu() {
@@ -95,12 +95,12 @@ public class MyMovie {
         this.price = price;
     }
 
-    public String getDirector() {
-        return director;
+    public String getRating() {
+        return rating;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public MultipartFile getPictures() {

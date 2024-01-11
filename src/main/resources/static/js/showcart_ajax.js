@@ -50,8 +50,8 @@ function change(btn, n,cartId) {
     num = t.val();
 
     var tds=$(btn).parent().siblings();
-    var director = tds.eq(4).text();
-    tds.eq(5).text(director * num);
+    var rating = tds.eq(4).text();
+    tds.eq(5).text(rating * num);
     total();
     $.post("/cart/updateCart",{"cartId":cartId,"num":num});
 }

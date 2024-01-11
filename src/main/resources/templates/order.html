@@ -69,7 +69,7 @@
 						<input id="buy-phone" type="text" placeholder="手机号码或电话"></p>
 					<p th:if="${member.getMobile()}!=''">
 						<input id="buy-phone" type="text" th:value="${member.getMobile()}"></p>
-					<input id="buy-email" class="disabled" type="text" th:value="${member.getEmail()}" disabled="disabled">
+					<input id="buy-username" class="disabled" type="text" th:value="${member.getUsername()}" disabled="disabled">
 					<button id="add-buyer" onclick="AddBuyer()">确定</button>
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 								<img class="movie-pic" th:src="'/picture/'+${cart.pictures}" alt="鲜花图片">
 								<div class="movie-desc">
 									<a th:href="'index/movieDetail?floweid='+${cart.movieid}" th:text="${cart.moviename}">moviename</a><br>
-									<span class="movie-price" th:text="${cart.director}"></span>
+									<span class="movie-price" th:text="${cart.rating}"></span>
 									<span class="num"> x <span th:text="${cart.num}"></span></span>
 								</div>
 							</div>

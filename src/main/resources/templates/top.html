@@ -3,28 +3,18 @@
     <tr>
       <td rowspan=2><img th:src="@{/image/logo.jpg}" style="width:216px; height:68px"> </td>
       <td style="font-size:x-small;">
-        <p th:if="${session.memberLogin}"><span th:text="'欢迎'+${session.memberLogin.getEmail()}+'光临鲜花礼品网'" /></p>
-        <p th:unless="${session.memberLogin}">欢迎光临鲜花礼品网</p>
+        <p th:if="${session.memberLogin}"><span th:text="'欢迎'+${session.memberLogin.getUsername()}+'光临鲜花礼品网'" /></p>
+        <p th:unless="${session.memberLogin}">IC电影</p>
       </td>
 
       <td style="background:url('/image/topxmenubg.jpg'); font-size:x-small;text-align:center;">
-        <a href="" style="text-decoration:none;">我的帐户</a>|
-        <a href="/order/showOrder" style="text-decoration:none;">我的订单</a>|
-        <a href="p" style="text-decoration:none;">添加鲜花</a>|
-        <a href="/cart/showCart" style="text-decoration:none;">购物车</a>|帮助中心
-      </td>
-    </tr>
-    <tr>
-      <td>
-
+        <a href="" style="text-decoration:none;">个人</a>
         <p th:if="${session.memberLogin}"><a href="/index/logOut" style="font-size:x-small;text-decoration:none;">退出</a>
           <a href="/index/toRegister" style="font-size:x-small;text-decoration:none;">注册</a>
-          <a href="/admin/toAdminLogin" style="font-size:x-small;text-decoration:none;">后台登录</a>
         </p>
         <p th:unless="${session.memberLogin}">
           <a href="/index/toLogin" style="font-size:x-small;text-decoration:none;">登录</a>&nbsp;
           <a href="/index/toRegister" style="font-size:x-small;text-decoration:none;">注册</a>&nbsp;&nbsp;
-          <a href="/admin/toAdminLogin" style="font-size:x-small;text-decoration:none;">后台登录</a>&nbsp;&nbsp;
         </p>
       </td>
       <td style="text-align:right;"><img th:src="@{/image/ttel.jpg}"></td>

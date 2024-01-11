@@ -171,10 +171,10 @@ function SaveConsignee(member,operation){
 function AddBuyer(){
     var name=$("#buy-name").val();
     var phone=$("#buy-phone").val();
-    var email=$("#buy-email").val();
+    var username=$("#buy-username").val();
     // ajax更新服务器数据
     $("#add-buyer").parent().text("").append('<span class="buy-name">'+name
-        +'</span><span class="buy-phone">'+phone+'</span><span class="buy-email">'+email+'</span>'
+        +'</span><span class="buy-phone">'+phone+'</span><span class="buy-username">'+username+'</span>'
         +'<a href="javascript:EditBuyer()" class="edit-buy">编辑</a>');
     $.post("{:url('member/editMember')}",{name:name,phone:phone});
 
@@ -183,14 +183,14 @@ function AddBuyer(){
 function EditBuyer(){
     var name=$(".buy-name").text();
     var phone=$(".buy-phone").text();
-    var email=$(".buy-email").text();
+    var username=$(".buy-username").text();
     // ajax更新服务器数据
     $(".edit-buy").parent().text("").append('<input id="buy-name" type="text" placeholder="您的姓名">'
         +'<input id="buy-phone" type="text" placeholder="手机号码或电话">'
-        +'<input id="buy-email" class="disabled" type="text" value="hhccrr@foxmail.com" disabled="disabled">'
+        +'<input id="buy-username" class="disabled" type="text" value="hhccrr@foxmail.com" disabled="disabled">'
         +'<button onclick="AddBuyer()" id="add-buyer">确定</button>');
     $("#buy-name").val(name);
     $("#buy-phone").val(phone);
-    $("#buy-email").val(email);
+    $("#buy-username").val(username);
     $.post("{:url('member/editMember')}",{name:name,phone:phone});
 }

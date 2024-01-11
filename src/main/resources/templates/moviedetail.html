@@ -14,13 +14,14 @@
         <td colspan=2 align=center><div style="'font-weight:bold;font-size:medium;height:40px;line-height:40px;color:#000066;text-align:center;border-width:1px;  border-style:solid;border-color:red;'">
             <span th:text="${movie.moviename}">花名</span></div></td>
      </tr>
+
      <tr>
-       <td width=50><font size=2>材料：</font></td>
-         <td> <span size="2" th:text="${movie.staring}"></span></td>
+     	<td width=50><font size=2>导演：</font></td>
+     	<td><span size=2 th:text="${movie.director}"></span></td>
      </tr>
      <tr>
-     	<td width=50><font size=2>包装：</font></td>
-     	<td><span size=2 th:text="${movie.baozhuang}"></span></td>
+         <td width=50><font size=2>主演：</font></td>
+         <td> <span size="2" th:text="${movie.staring}"></span></td>
      </tr>
     <tr>
      	<td width=50><font size=2>花语：</font></td>
@@ -33,7 +34,7 @@
      <tr>
      	<td colspan=2><div style='text-align:left;font-size: medium; color: #000066;'>
      	<div style='text-decoration:line-through;margin-top:8px;'>原价:￥<span th:text="${movie.price}" />元</div>
-     	现价：<b>￥<span size=4 color=red th:text="${movie.director}"></span>元</b></div>
+     	现价：<b>￥<span size=4 color=red th:text="${movie.rating}"></span>元</b></div>
      	</td>
      </tr>
      <tr>

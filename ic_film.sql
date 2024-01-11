@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `evaluate`;
 CREATE TABLE `evaluate` (
   `evaluate_id` int NOT NULL AUTO_INCREMENT COMMENT '评价编号',
   `user_id` int NOT NULL COMMENT '用户编号',
-  `movie_id` int NOT NULL COMMENT '电影编号',
+  `movieid` int NOT NULL COMMENT '电影编号',
   `evaluate_value` decimal(2,0) NOT NULL DEFAULT '0' COMMENT '评分',
   `evaluate_date` date DEFAULT NULL COMMENT '评分日期',
   PRIMARY KEY (`evaluate_id`),
-  KEY `evaluate_movie_movie_id_fk` (`movie_id`),
+  KEY `evaluate_movie_movieid_fk` (`movieid`),
   KEY `evaluate_user_user_id_fk` (`user_id`),
-  CONSTRAINT `evaluate_movie_movie_id_fk` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`),
+  CONSTRAINT `evaluate_movie_movieid_fk` FOREIGN KEY (`movieid`) REFERENCES `movie` (`movieid`),
   CONSTRAINT `evaluate_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=551 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -98,7 +98,7 @@ DELIMITER ;;
     SELECT COUNT(*)
     INTO count_duplicates
     FROM evaluate
-    WHERE movie_id = NEW.movie_id AND user_id = NEW.user_id;
+    WHERE movieid = NEW.movieid AND user_id = NEW.user_id;
 
     -- If duplicates found, raise an exception
     IF count_duplicates > 0 THEN
@@ -128,19 +128,19 @@ DELIMITER ;;
     SELECT COUNT(*)
     INTO week_count
     FROM evaluate
-    WHERE movie_id = NEW.movie_id AND YEARWEEK(evaluate_date) = YEARWEEK(NEW.evaluate_date);
+    WHERE movieid = NEW.movieid AND YEARWEEK(evaluate_date) = YEARWEEK(NEW.evaluate_date);
 
     -- Calculate month count
     SELECT COUNT(*)
     INTO month_count
     FROM evaluate
-    WHERE movie_id = NEW.movie_id AND DATE_FORMAT(evaluate_date, '%Y-%m') = DATE_FORMAT(NEW.evaluate_date, '%Y-%m');
+    WHERE movieid = NEW.movieid AND DATE_FORMAT(evaluate_date, '%Y-%m') = DATE_FORMAT(NEW.evaluate_date, '%Y-%m');
 
     -- Update movie table
     UPDATE movie
     SET movie_weekindex = week_count,
         movie_monthindex = month_count
-    WHERE movie_id = NEW.movie_id;
+    WHERE movieid = NEW.movieid;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -162,18 +162,18 @@ DELIMITER ;;
     SET rating = (
         SELECT AVG(evaluate_value)
         FROM evaluate
-        WHERE movie.movie_id = NEW.movie_id
+        WHERE movie.movieid = NEW.movieid
     )
-    WHERE movie_id = NEW.movie_id;
+    WHERE movieid = NEW.movieid;
 
     -- Update index
     UPDATE movie
     SET `movie_index` = (
         SELECT COUNT(*)
         FROM evaluate
-        WHERE movie.movie_id = NEW.movie_id
+        WHERE movie.movieid = NEW.movieid
     )
-    WHERE movie_id = NEW.movie_id;
+    WHERE movieid = NEW.movieid;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -213,12 +213,12 @@ DELIMITER ;;
     DECLARE count_duplicates INT;
 
     -- Only prevent duplicates if id or uid is actually being updated
-    IF NEW.movie_id != OLD.movie_id OR NEW.user_id != OLD.user_id THEN
+    IF NEW.movieid != OLD.movieid OR NEW.user_id != OLD.user_id THEN
         -- Check if there are duplicates
         SELECT COUNT(*)
         INTO count_duplicates
         FROM evaluate
-        WHERE movie_id = NEW.movie_id AND user_id = NEW.user_id;
+        WHERE movieid = NEW.movieid AND user_id = NEW.user_id;
 
         -- If duplicates found, raise an exception
         IF count_duplicates > 1 THEN
@@ -266,19 +266,19 @@ DELIMITER ;;
     SELECT COUNT(*)
     INTO week_count
     FROM evaluate
-    WHERE movie_id = NEW.movie_id AND YEARWEEK(evaluate_date) = YEARWEEK(NEW.evaluate_date);
+    WHERE movieid = NEW.movieid AND YEARWEEK(evaluate_date) = YEARWEEK(NEW.evaluate_date);
 
     -- Calculate month count
     SELECT COUNT(*)
     INTO month_count
     FROM evaluate
-    WHERE movie_id = NEW.movie_id AND DATE_FORMAT(evaluate_date, '%Y-%m') = DATE_FORMAT(NEW.evaluate_date, '%Y-%m');
+    WHERE movieid = NEW.movieid AND DATE_FORMAT(evaluate_date, '%Y-%m') = DATE_FORMAT(NEW.evaluate_date, '%Y-%m');
 
     -- Update movie table
     UPDATE movie
     SET movie_weekindex = week_count,
         movie_monthindex = month_count
-    WHERE movie_id = NEW.movie_id;
+    WHERE movieid = NEW.movieid;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -300,9 +300,9 @@ DELIMITER ;;
     SET rating = (
         SELECT AVG(evaluate_value)
         FROM evaluate
-        WHERE movie.movie_id = NEW.movie_id
+        WHERE movie.movieid = NEW.movieid
     )
-    WHERE movie_id = NEW.movie_id;
+    WHERE movieid = NEW.movieid;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -326,19 +326,19 @@ DELIMITER ;;
     SELECT COUNT(*)
     INTO week_count
     FROM evaluate
-    WHERE movie_id = OLD.movie_id AND YEARWEEK(evaluate_date) = YEARWEEK(OLD.evaluate_date);
+    WHERE movieid = OLD.movieid AND YEARWEEK(evaluate_date) = YEARWEEK(OLD.evaluate_date);
 
     -- Calculate month count
     SELECT COUNT(*)
     INTO month_count
     FROM evaluate
-    WHERE movie_id = OLD.movie_id AND DATE_FORMAT(evaluate_date, '%Y-%m') = DATE_FORMAT(OLD.evaluate_date, '%Y-%m');
+    WHERE movieid = OLD.movieid AND DATE_FORMAT(evaluate_date, '%Y-%m') = DATE_FORMAT(OLD.evaluate_date, '%Y-%m');
 
     -- Update movie table
     UPDATE movie
     SET movie_weekindex = week_count,
         movie_monthindex = month_count
-    WHERE movie_id = OLD.movie_id;
+    WHERE movieid = OLD.movieid;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -360,12 +360,12 @@ DELIMITER ;;
     SET rating = (
         SELECT AVG(evaluate_value)
         FROM evaluate
-        WHERE movie.movie_id = OLD.movie_id
+        WHERE movie.movieid = OLD.movieid
     )
-    WHERE movie_id = OLD.movie_id AND (
+    WHERE movieid = OLD.movieid AND (
         SELECT COUNT(*)
         FROM evaluate
-        WHERE movie.movie_id = OLD.movie_id
+        WHERE movie.movieid = OLD.movieid
     ) > 0;
 
     -- Update index
@@ -373,9 +373,9 @@ DELIMITER ;;
     SET `movie_index` = (
         SELECT COUNT(*)
         FROM evaluate
-        WHERE movie.movie_id = OLD.movie_id
+        WHERE movie.movieid = OLD.movieid
     )
-    WHERE movie_id = OLD.movie_id;
+    WHERE movieid = OLD.movieid;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -391,8 +391,8 @@ DROP TABLE IF EXISTS `movie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `movie` (
-  `movie_id` int NOT NULL AUTO_INCREMENT COMMENT '电影编号',
-  `movie_title` varchar(20) NOT NULL COMMENT '电影标题',
+  `movieid` int NOT NULL AUTO_INCREMENT COMMENT '电影编号',
+  `moviename` varchar(20) NOT NULL COMMENT '电影标题',
   `director` varchar(50) NOT NULL COMMENT '电影导演',
   `staring` varchar(50) NOT NULL COMMENT '电影主演',
   `genre` varchar(20) NOT NULL COMMENT '电影类别',
@@ -403,7 +403,7 @@ CREATE TABLE `movie` (
   `movie_weekindex` int NOT NULL DEFAULT '0' COMMENT '本周指数',
   `movie_monthindex` int NOT NULL DEFAULT '0' COMMENT '本月指数',
   `movie_type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '电影权限',
-  PRIMARY KEY (`movie_id`)
+  PRIMARY KEY (`movieid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

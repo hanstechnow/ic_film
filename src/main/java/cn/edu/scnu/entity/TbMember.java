@@ -7,16 +7,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@TableName(value="tb_member")
+@TableName(value="user")
 public class TbMember implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId
-    private String email;
+    private String username;
     private String password;
-    private String mname;
-    private String mobile;
-    private String address;
-    private int jifen;
-    private double ye;
 
 }

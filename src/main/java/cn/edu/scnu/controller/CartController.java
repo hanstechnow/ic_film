@@ -26,7 +26,7 @@ public class CartController {
         }
         Cart cart=new Cart();
         cart.setMovieid(movieid);
-        cart.setEmail(member.getEmail());
+        cart.setUsername(member.getUsername());
         cart.setNum(1);
         cartService.addCart(cart);
         return "redirect:/index";
@@ -38,7 +38,7 @@ public class CartController {
         if (member==null){
             return "login";
         }
-        List<Cart> carts=cartService.showCart(member.getEmail());
+        List<Cart> carts=cartService.showCart(member.getUsername());
         model.addAttribute("carts",carts);
         return "showcart";
 
@@ -59,7 +59,7 @@ public class CartController {
     @RequestMapping("/cart/clearCart")
     public String clearCart(HttpSession session){
         TbMember member=(TbMember)session.getAttribute("memberLogin");
-        cartService.clearCart(member.getEmail());
+        cartService.clearCart(member.getUsername());
         return "redirect:/cart/showCart";
     }
 }

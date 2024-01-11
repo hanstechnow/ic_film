@@ -1,11 +1,11 @@
 $(function(){
-	$("input[name='email']").blur(function(){
-		var email = $(this).val();
+	$("input[name='username']").blur(function(){
+		var username = $(this).val();
 		
-		if(formObj.checkNull("email","Email不能为空！") && formObj.checkEmail()){
-			$.post("/index/checkemail",{"email":email},function(result){
-				$("#email_msg").text(result);
-				$("#email_msg").css("color","red");
+		if(formObj.checkNull("username","Username不能为空！") && formObj.checkUsername()){
+			$.post("/index/checkusername",{"username":username},function(result){
+				$("#username_msg").text(result);
+				$("#username_msg").css("color","red");
 			});
 		}
 	});
@@ -23,16 +23,16 @@ $(function(){
 	
 	$("form").submit(function(){
 		var flag=true;
-		flag=formObj.checkNull("email","Email不能为空！") && flag;
+		flag=formObj.checkNull("username","Username不能为空！") && flag;
 		flag=formObj.checkNull("passw1","密码不能为空！") && flag;
 		flag=formObj.checkNull("passw2","确认密码不能为空！") && flag;
-		flag=formObj.checkEmail() && flag;
+		flag=formObj.checkUsername() && flag;
 		flag=formObj.checkPassword() && flag;
 		
-		var email = $("input[name='email']").val();
+		var username = $("input[name='username']").val();
 		var passw1 = $("input[name='passw1']").val();		
 		if(flag){
-			$.post("/index/doRegister",{"email":email,"passw1":passw1},function(result){
+			$.post("/index/doRegister",{"username":username,"passw1":passw1},function(result){
 				if(result=="注册成功"){
 					alert(result);
 					window.location.href("/index");
@@ -61,15 +61,15 @@ var formObj={
 			}
 			return true;
 		},
-		"checkEmail":function(){
-			var email=$("input[name='email']").val();
-			var regExp=/^\w+@\w+(\.\w+)+$/;
-			if(email.length>0){
-				if(!regExp.test(email)){
-					this.setMsg("email","email格式不正确！");
-					return false;
-				}
-			}
+		"checkUsername":function(){
+			// var username=$("input[name='username']").val();
+			// var regExp=/^\w+@\w+(\.\w+)+$/;
+			// if(username.length>0){
+			// 	if(!regExp.test(username)){
+			// 		this.setMsg("username","username格式不正确！");
+			// 		return false;
+			// 	}
+			// }
 			return true;
 		},
 		"checkNull":function(name,msg){

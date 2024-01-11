@@ -3,7 +3,7 @@ create database movie;
 use movie;
 CREATE TABLE customer(
 	custID  int  auto_increment,
-	email char(30),
+	username char(30),
 	sname char(10),
 	sex char(2),
 	mobile char(11),
@@ -14,25 +14,25 @@ CREATE TABLE customer(
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 delete from customer;
 
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('b@163.com','������','Ů','18012889889','��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('b@163.com','������','��','18022735825','��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','��С��','Ů','18912123212','��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����ϼ','Ů','13522132124','�������¸۶�·144��','510009','1');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','��÷','Ů','18921214244','�����л���ʦ����ѧ','510023','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����','Ů','18927712112','�㶫ʡ��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����','��','18923212321','��ɽ�Ϻ�ʨɽ��ѧ��','528225','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','�ŵº�','��','13399899898','��������������·89��','528228','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','���','��','13323232321','��ɽ�Ϻ�ʨɽ����ʦ����ѧ�Ϻ�ѧԺ','121121','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','�º�','��','18923221212','��ɽ�Ϻ�ʨɽ��ѧ��','523222','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����','Ů','18923121321','��ɽ�Ϻ�ʨɽ��ѧ��','528225','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('a@163.com','������','��','18923232321','����ʦ����ѧ�Ϻ�У��','121211','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('aa@163.com','��˸��','Ů','1122121','����ʦ����ѧ�Ϻ�ѧԺ','212121','0');
-insert into customer(email,sname,sex,mobile,address,zip,cdefault) values('aa@163.com','������','��','18923234343','��ɽ�Ϻ�ʨɽ��ѧ��','528225','1');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('b@163.com','������','Ů','18012889889','��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('b@163.com','������','��','18022735825','��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','��С��','Ů','18912123212','��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����ϼ','Ů','13522132124','�������¸۶�·144��','510009','1');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','��÷','Ů','18921214244','�����л���ʦ����ѧ','510023','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����','Ů','18927712112','�㶫ʡ��ɽ���Ϻ���ʨɽ��ѧ��','528225','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����','��','18923212321','��ɽ�Ϻ�ʨɽ��ѧ��','528225','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','�ŵº�','��','13399899898','��������������·89��','528228','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','���','��','13323232321','��ɽ�Ϻ�ʨɽ����ʦ����ѧ�Ϻ�ѧԺ','121121','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','�º�','��','18923221212','��ɽ�Ϻ�ʨɽ��ѧ��','523222','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','����','Ů','18923121321','��ɽ�Ϻ�ʨɽ��ѧ��','528225','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('a@163.com','������','��','18923232321','����ʦ����ѧ�Ϻ�У��','121211','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('aa@163.com','��˸��','Ů','1122121','����ʦ����ѧ�Ϻ�ѧԺ','212121','0');
+insert into customer(username,sname,sex,mobile,address,zip,cdefault) values('aa@163.com','������','��','18923234343','��ɽ�Ϻ�ʨɽ��ѧ��','528225','1');
 
 select * from customer;
 
 CREATE TABLE member(
-	email char(30)  PRIMARY KEY,
+	username char(30)  PRIMARY KEY,
 	password char(50),
 	mname char(10),
 	sex char(2),
@@ -48,7 +48,7 @@ CREATE TABLE member(
 
 	CREATE TABLE cart(
 	cartID INT primary key auto_increment,
-	email char(30),
+	username char(30),
 	movieID char(15),
 	num int
 	)ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -56,7 +56,7 @@ CREATE TABLE member(
 
 	CREATE TABLE myorder(
 	orderID int  PRIMARY KEY   auto_increment,
-	email char(30),
+	username char(30),
 	custID int,
 	shifu Decimal(10,2),
 	inputtime datetime,
@@ -90,7 +90,7 @@ CREATE TABLE member(
 	SLID int  PRIMARY KEY   auto_increment,
 	orderID int,
 	movieID char(30),
-	email char(30),
+	username char(30),
 	num int,
 	title varchar(50),
 	star smallint,
@@ -115,11 +115,11 @@ CREATE TABLE movie(
 	fclass char(20),
 	region char(20),
 	staring varchar(200),
-	baozhuang varchar(200),
+	director varchar(200),
 	huayu varchar(400),
 	shuoming varchar(200),
 	price int,
-	director int,
+	rating int,
 	pictures varchar(30),
 	picturem varchar(30),
 	pictureb varchar(30),

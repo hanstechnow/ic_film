@@ -12,11 +12,11 @@ public class Movie {
     private String fclass;
     private String region;
     private String staring;
-    private String baozhuang;
+    private String director;
     private String huayu;
     private String shuoming;
     private Integer price;
-    private String director;
+    private String rating;
     private String pictures;
     private String picturem;
     private String pictureb;
@@ -74,12 +74,12 @@ public class Movie {
         this.staring = staring;
     }
 
-    public String getBaozhuang() {
-        return baozhuang;
+    public String getDirector() {
+        return director;
     }
 
-    public void setBaozhuang(String baozhuang) {
-        this.baozhuang = baozhuang;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public String getHuayu() {
@@ -106,12 +106,12 @@ public class Movie {
         this.price = price;
     }
 
-    public Integer getDirector() {
-        return director;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public String getPictures() {

@@ -3,10 +3,10 @@ package cn.edu.scnu.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="tb_member")
+@Entity(name="user")
 public class TbMember {
     @Id
-    private String email;
+    private String username;
     private String password;
     private String mname;
     private String mobile;
@@ -14,12 +14,12 @@ public class TbMember {
     private int jifen;
     private double ye;
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

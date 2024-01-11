@@ -22,7 +22,7 @@ public class CartService extends ServiceImpl<CartMapper, Cart> {
 
     public void addCart(Cart cart) {
         QueryWrapper<Cart> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("email", cart.getEmail());
+        queryWrapper.eq("username", cart.getUsername());
         queryWrapper.eq("movieId", cart.getMovieid());
         Cart _cart = cartMapper.selectOne(queryWrapper);
         if (_cart == null){
@@ -30,7 +30,7 @@ public class CartService extends ServiceImpl<CartMapper, Cart> {
             cart.setMoviename(movie.getMoviename());
             cart.setPictures(movie.getPictures());
             cart.setPrice(movie.getPrice());
-            cart.setDirector(movie.getDirector());
+            cart.setRating(movie.getRating());
             cartMapper.insert(cart);
         } else {
             _cart.setNum(_cart.getNum() + cart.getNum());
@@ -38,9 +38,9 @@ public class CartService extends ServiceImpl<CartMapper, Cart> {
         }
     }
 
-    public List<Cart> showCart(String email) {
+    public List<Cart> showCart(String username) {
         QueryWrapper<Cart> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("email", email);
+        queryWrapper.eq("username", username);
         return cartMapper.selectList(queryWrapper);
     }
 
@@ -50,9 +50,9 @@ public class CartService extends ServiceImpl<CartMapper, Cart> {
         cartMapper.updateById(cart);
     }
 
-    public void clearCart(String email) {
+    public void clearCart(String username) {
         QueryWrapper<Cart> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("email", email);
+        queryWrapper.eq("username", username);
         cartMapper.delete(queryWrapper);
     }
 }

@@ -77,8 +77,8 @@ public class IndexController {
 
     @RequestMapping("/index/doLogin")
     @ResponseBody
-    public String doLogin(String email, String password, HttpSession session) {
-        TbMember member = memberService.login(email, password);
+    public String doLogin(String username, String password, HttpSession session) {
+        TbMember member = memberService.login(username, password);
         if (member != null) {
             member.setPassword(""); //去敏
             session.setAttribute("memberLogin", member);
@@ -104,7 +104,7 @@ public class IndexController {
     public String doRegister(RegisterDTO registerDTO){
         // 将RegisterDTO转换为TbMember
         TbMember member = new TbMember();
-        member.setEmail(registerDTO.getEmail());
+        member.setUsername(registerDTO.getUsername());
         member.setPassword(registerDTO.getPassw1()); // 注意这里的转换
 
         if(memberService.register(member)){

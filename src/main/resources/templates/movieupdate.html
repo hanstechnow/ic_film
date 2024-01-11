@@ -38,7 +38,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align:right"><font size=2  th:text="'主材料：'+${movie.region}">主材料：</font></td>
+                <td style="text-align:right"><font size=2  th:text="'主主演：'+${movie.region}">主主演：</font></td>
                 <td><Select name="region" >
                     <Option value="玫瑰">玫瑰
                     <Option value="康乃馨">康乃馨
@@ -52,12 +52,12 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align:right"><font size=2>材料：</font></td>
+                <td style="text-align:right"><font size=2>主演：</font></td>
                 <td><TextArea name="staring" Rows="2" Cols="40" th:text="${movie.staring}"></TextArea></td>
             </tr>
             <tr>
                 <td style="text-align:right"><font size=2>包装：</font></td>
-                <td><TextArea name="baozhuang" Rows="2" Cols="40" th:text="${movie.baozhuang}"></TextArea></td>
+                <td><TextArea name="director" Rows="2" Cols="40" th:text="${movie.director}"></TextArea></td>
             </tr>
             <tr>
                 <td style="text-align:right"><font size=2>花语：</font></td>
@@ -73,7 +73,7 @@
             </tr>
             <tr>
                 <td style="text-align:right"><font size=2>现价：</font></td>
-                <td><input type=text name="director" SIZE=18 th:value="${movie.director}"></td>
+                <td><input type=text name="rating" SIZE=18 th:value="${movie.rating}"></td>
             </tr>
 
             <tr>
