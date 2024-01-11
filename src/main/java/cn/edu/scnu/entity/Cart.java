@@ -8,12 +8,12 @@ import lombok.Data;
 public class Cart {
     @TableId(type = IdType.AUTO)
     private Integer cartId;
-    private String email;
+    private String username;
     private String movieid;
     private Integer num;
     private String moviename;
     private String pictures;
     private Integer price;
-    private String director;
+    private String rating;
 
 }

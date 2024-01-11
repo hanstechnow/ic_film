@@ -55,11 +55,11 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
         movie.setFclass(myMovie.getFclass());
         movie.setRegion(myMovie.getRegion());
         movie.setStaring(myMovie.getStaring());
-        movie.setBaozhuang(myMovie.getBaozhuang());
+        movie.setDirector(myMovie.getDirector());
         movie.setHuayu(myMovie.getHuayu());
         movie.setShuoming(myMovie.getShuoming());
         movie.setPrice(myMovie.getPrice());
-        movie.setDirector(myMovie.getDirector());
+        movie.setRating(myMovie.getRating());
         movie.setTejia(myMovie.getTejia());
         movie.setSellednum(0);
 
@@ -204,7 +204,7 @@ public class MovieService extends ServiceImpl<MovieMapper, Movie> {
             queryWrapper.like("moviename", moviename);
         if(StringUtils.isNotEmpty(fclass))
             queryWrapper.like("fclass", fclass);
-        queryWrapper.between("director", minprice, maxprice);
+        queryWrapper.between("rating", minprice, maxprice);
 
         int count = movieMapper.selectCount(queryWrapper).intValue();
         queryWrapper.orderByDesc("sellednum");

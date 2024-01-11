@@ -15,16 +15,17 @@ public class MemberService extends ServiceImpl<MemberMapper, TbMember> {
     @Autowired
     private MemberMapper memberMapper;
 
-    public TbMember login(String email, String password) {
-        TbMember member = memberMapper.selectById(email);
-        if (member.getPassword().equals(MD5Util.md5(password))) {
+    public TbMember login(String username, String password) {
+        TbMember member = memberMapper.selectById(username);
+        if (member != null && member.getPassword().equals(MD5Util.md5(password))) {
             return member;
         } else {
             return null;
         }
     }
+
     public boolean register(TbMember member) {
-        if (StringUtils.isEmpty(member.getEmail()) || StringUtils.isEmpty(member.getPassword())) {
+        if (StringUtils.isEmpty(member.getUsername()) || StringUtils.isEmpty(member.getPassword())) {
             return false;
         }
         member.setPassword(MD5Util.md5(member.getPassword()));

@@ -10,11 +10,5 @@ import lombok.Data;
 public class Customer {
     @TableId(type= IdType.AUTO)
     private Integer custId;
-    private String email;
-    private String sname;
-    private String sex;
-    private String mobile;
-    private String address;
-    private String zip;
-    private String cdefault;
+    private String username;
 }

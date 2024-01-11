@@ -5,11 +5,11 @@ public class MyCart {
     private Integer cartId;
     private String movieid;
     private String pictures;
-    private String email;
+    private String username;
     private Integer num;
     private String moviename;
     private Integer price;
-    private String director;
+    private String rating;
 
     public Integer getCartId() {
         return cartId;
@@ -35,12 +35,12 @@ public class MyCart {
         this.pictures = pictures;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getNum() {
@@ -67,11 +67,11 @@ public class MyCart {
         this.price = price;
     }
 
-    public Integer getDirector() {
-        return director;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

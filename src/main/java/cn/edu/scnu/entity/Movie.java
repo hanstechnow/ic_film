@@ -15,11 +15,11 @@ public class Movie implements Serializable {
     private String fclass;
     private String region;
     private String staring;
-    private String baozhuang;
+    private String director;
     private String huayu;
     private String shuoming;
     private Integer price;
-    private String director;
+    private String rating;
     private String pictures;
     private String picturem;
     private String pictureb;

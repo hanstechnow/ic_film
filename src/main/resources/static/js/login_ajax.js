@@ -1,9 +1,9 @@
 $(function() {
 	$("form").submit(function() {
-		var email = $("input[name='email']").val();
+		var username = $("input[name='username']").val();
 		var password = $("input[name='password']").val();
 		$.get("/index/doLogin", {
-			"email" : email,
+			"username" : username,
 			"password" : password
 		}, function(result) {
 			if(result=="登录成功!")
